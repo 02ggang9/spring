@@ -1,4 +1,4 @@
-package com.example.spring.domain.dto;
+package com.example.spring.domain.post.dto;
 
 import com.example.spring.domain.post.entity.Post;
 import lombok.AllArgsConstructor;

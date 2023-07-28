@@ -1,12 +1,11 @@
-package com.example.spring.domain.post;
+package com.example.spring.domain.post.entity;
 
+import com.example.spring.domain.comment.Comment;
 import jakarta.persistence.*;
-import jdk.jfr.Category;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.xml.stream.events.Comment;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,9 +45,8 @@ public class Post {
     @Column(name = "password", length = MAX_PASSWORD_LENGTH)
     private String password;
 
-    @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "category_id", nullable = false)
-    private Category categoryId;
+    @Column(name = "category_id", nullable = false)
+    private Long categoryId;
 
     @OneToMany(mappedBy = "post", cascade = REMOVE)
     private final List<Comment> comments = new ArrayList<>();
@@ -56,13 +54,25 @@ public class Post {
     // 생성자를 가독성 있게 해줌.
     @Builder
     private Post(String title, String content, Integer visitCount, Boolean isNotice, Boolean isSecret, String password,
-                 Category category) {
+                 Long categoryId) {
         this.title = title;
         this.content = content;
         this.visitCount = visitCount;
         this.isNotice = isNotice;
         this.isSecret = isSecret;
         this.password = password;
-        this.categoryId = category;
+        this.categoryId = categoryId;
     }
+
+    public void update(Post post) {
+        this.title = post.getTitle();
+        this.content = post.getContent();
+        this.visitCount = post.getVisitCount();
+        this.isNotice = post.getIsNotice();
+        this.isSecret = post.getIsSecret();
+        this.password = post.getPassword();
+        this.categoryId = post.getCategoryId();
+    }
+
+
 }

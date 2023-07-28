@@ -1,4 +1,4 @@
-package com.example.spring.domain.dto;
+package com.example.spring.domain.post.dto;
 
 import io.micrometer.common.lang.Nullable;
 import jakarta.validation.constraints.NotBlank;
