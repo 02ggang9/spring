@@ -1,4 +1,4 @@
-package com.example.spring.domain.application;
+package com.example.spring.domain.post.application;
 
 import com.example.spring.domain.post.dao.PostRepository;
 import com.example.spring.domain.post.dto.PostCreateRequest;

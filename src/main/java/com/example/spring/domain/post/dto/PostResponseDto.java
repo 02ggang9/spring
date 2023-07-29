@@ -33,4 +33,15 @@ public class PostResponseDto {
                 .categoryId(post.getCategoryId())
                 .build();
     }
+
+    public PostResponseDto(Post post) {
+        this.id = post.getId();
+        this.title = post.getTitle();
+        this.content = post.getContent();
+        this.visitCount = post.getVisitCount();
+        this.isNotice = post.getIsNotice();
+        this.isSecret = post.getIsSecret();
+        this.password = post.getPassword();
+        this.categoryId = post.getCategoryId();
+    }
 }
