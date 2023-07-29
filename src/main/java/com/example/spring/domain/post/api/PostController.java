@@ -41,6 +41,16 @@ public class PostController {
         return collect;
     }
 
+    @GetMapping("/{postId}/secrete")
+    public PostResponseDto getSecrete(
+            @PathVariable long postId,
+            @RequestParam("password") String password) {
+
+        Post secretePost = postService.getSecretPost(postId, password);
+        PostResponseDto result = new PostResponseDto(secretePost);
+        return result;
+    }
+
 
     @PostMapping
     public ResponseEntity<Void> createPost(

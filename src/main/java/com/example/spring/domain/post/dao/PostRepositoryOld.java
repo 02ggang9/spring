@@ -19,4 +19,8 @@ public class PostRepositoryOld {
         ).getResultList();
     }
 
+    public Post findOne(Long id) {
+        return em.find(Post.class, id);
+    }
+
 }

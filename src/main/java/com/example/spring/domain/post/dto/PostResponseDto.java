@@ -3,12 +3,14 @@ package com.example.spring.domain.post.dto;
 import com.example.spring.domain.post.entity.Post;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 
 import static lombok.AccessLevel.PRIVATE;
 
 @Getter
 @Builder
+@Data
 @AllArgsConstructor(access = PRIVATE)
 public class PostResponseDto {
 
