@@ -23,4 +23,10 @@ public class PostRepositoryOld {
         return em.find(Post.class, id);
     }
 
+    public List<Post> findByCategory(Long id) {
+        return em.createQuery(
+                        "select p from Post p where p.categoryId = :categoryId", Post.class
+                ).setParameter("categoryId", id)
+                .getResultList();
+    }
 }

@@ -51,6 +51,15 @@ public class PostController {
         return result;
     }
 
+    @GetMapping("/category")
+    public List<PostResponseDto> getCategory(@RequestParam("categoryId") Long categoryId) {
+        List<Post> posts = postRepositoryOld.findByCategory(categoryId);
+        return posts.stream()
+                .map(PostResponseDto::new)
+                .collect(Collectors.toList());
+    }
+
+
 
     @PostMapping
     public ResponseEntity<Void> createPost(
