@@ -23,15 +23,23 @@ public class PostController {
     private final PostRepositoryOld postRepositoryOld;
 
     @GetMapping
-    public List<PostResponseDto> findPosts() {
+    public List<PostResponseDto> getPosts() {
         List<Post> posts = postRepositoryOld.findAll();
         return posts.stream()
                 .map(PostResponseDto::new)
                 .collect(Collectors.toList());
-
     }
 
+    @GetMapping("/notice")
+    public List<PostResponseDto> getNotices() {
+        List<Post> notices = postRepositoryOld.findAll();
+        List<PostResponseDto> collect = notices.stream()
+                .map(o -> new PostResponseDto(o))
+                .filter(p -> p.getIsNotice())
+                .collect(Collectors.toList());
 
+        return collect;
+    }
 
 
     @PostMapping
